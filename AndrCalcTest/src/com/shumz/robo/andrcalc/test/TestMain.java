@@ -60,5 +60,34 @@ public class TestMain extends ActivityInstrumentationTestCase2<MainActivity> {
 	protected void tearDown() throws Exception {
 		solo.finishOpenedActivities();
 	}
+	
+	
+	//Trying to add custom methods....
+	
+	public void testInputDoubledDigits () {
+		
+		solo.enterText(0, "5.3");
+		solo.enterText(1, "6.2");
+		solo.clickOnButton("Multiply");
+		assertTrue(solo.searchText("32.86"));
+		
+	}
 
+	public void testInputCorruptedDoubledDigitsBB () {
+		
+//		solo.enterText(0, "5.3.8");
+
+		solo.enterText(0, "5.38");
+		solo.enterText(1, "6.2");
+		solo.clickOnButton("Multiply");
+		assertFalse(solo.searchText("32.86"));
+		
+	}
+	
+	public void testNoInputBB() {
+	
+		solo.clickOnButton("Multiply");
+		
+	}
+	
 }

@@ -5,14 +5,16 @@ import com.shumz.robo.andrcalc.MainActivity;
 import com.shumz.robo.andrcalc.R;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class TestMain extends ActivityInstrumentationTestCase2<MainActivity> {
+public class TestMainActivity extends
+		ActivityInstrumentationTestCase2<MainActivity> {
 
 	private Solo solo;
 
-	public TestMain() {
+	public TestMainActivity() {
 		super(MainActivity.class);
 	}
 
@@ -60,34 +62,81 @@ public class TestMain extends ActivityInstrumentationTestCase2<MainActivity> {
 	protected void tearDown() throws Exception {
 		solo.finishOpenedActivities();
 	}
-	
-	
-	//Trying to add custom methods....
-	
-	public void testInputDoubledDigits () {
-		
+
+	// Trying to add custom methods....
+
+	public void testInputDoubledDigitsBB() {
+
 		solo.enterText(0, "5.3");
 		solo.enterText(1, "6.2");
 		solo.clickOnButton("Multiply");
 		assertTrue(solo.searchText("32.86"));
-		
+
 	}
 
-	public void testInputCorruptedDoubledDigitsBB () {
-		
-//		solo.enterText(0, "5.3.8");
+	public void testInputCorruptedDoubledDigitsBB() {
 
-		solo.enterText(0, "5.38");
-		solo.enterText(1, "6.2");
+		// solo.enterText(0, "5.3.8");
+
+		solo.enterText(0, "05.38");
+		solo.enterText(1, "6.200000000000");
 		solo.clickOnButton("Multiply");
-		assertFalse(solo.searchText("32.86"));
-		
+		assertTrue(solo.searchText("33.356"));
+
 	}
-	
-	public void testNoInputBB() {
-	
+
+	public void testNoInputBB() throws Exception {
+
+		try {
+		
+		} catch (Exception e) {
+			solo.clickOnButton("Multiply"); Log.e("^__^", e.getMessage());
+			e.printStackTrace();
+			
+		}
+
+	}
+
+	public void testZerosMultBB() {
+
+		solo.enterText(0, "0");
+		solo.enterText(1, "0");
 		solo.clickOnButton("Multiply");
-		
+
+		assertTrue(solo.searchText("0.0"));
 	}
-	
+
+	public void testInputRestictedSymbolsBB() {
+
+		try {
+			solo.enterText(0, "/+-*/#%!@#$%^&*()_cjgvsdksdv0");
+			solo.enterText(1, "VEDFE KEbf kvhrvb76t67250464.dvd");
+		} catch (Exception e) {
+
+			solo.clickOnButton("Multiply");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void testNoInputForFieldOneBB() {
+
+		try {
+			solo.enterText(0, "0");
+
+			solo.clickOnButton("Multiply");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void testNoInputForFieldTwoBB() {
+
+		solo.enterText(1, "0");
+
+		solo.clickOnButton("Multiply");
+
+	}
 }

@@ -462,17 +462,17 @@ public class StackCalculatorTestLaunchWB extends
 		Log.d(TAG_APP, "Running testComplexCalculations()...");
 
 		Button button_0 = (Button) solo.getView(R.id.ButtonNumber00);
-		Button button_1 = (Button) solo.getView(R.id.ButtonNumber01);
+//		Button button_1 = (Button) solo.getView(R.id.ButtonNumber01);
 		Button button_2 = (Button) solo.getView(R.id.ButtonNumber02);
-		Button button_3 = (Button) solo.getView(R.id.ButtonNumber03);
-		Button button_4 = (Button) solo.getView(R.id.ButtonNumber04);
+//		Button button_3 = (Button) solo.getView(R.id.ButtonNumber03);
+//		Button button_4 = (Button) solo.getView(R.id.ButtonNumber04);
 		Button button_5 = (Button) solo.getView(R.id.ButtonNumber05);
-		Button button_6 = (Button) solo.getView(R.id.ButtonNumber06);
+//		Button button_6 = (Button) solo.getView(R.id.ButtonNumber06);
 		Button button_7 = (Button) solo.getView(R.id.ButtonNumber07);
 		Button button_8 = (Button) solo.getView(R.id.ButtonNumber08);
 		Button button_9 = (Button) solo.getView(R.id.ButtonNumber09);
 
-		Button button_dot = (Button) solo.getView(R.id.ButtonSymbolDot);
+//		Button button_dot = (Button) solo.getView(R.id.ButtonSymbolDot);
 		Button button_bracket_open = (Button) solo
 				.getView(R.id.ButtonSymbolBracketLeft);
 		Button button_bracket_close = (Button) solo
